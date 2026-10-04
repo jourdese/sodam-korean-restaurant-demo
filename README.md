@@ -1,6 +1,6 @@
 # SODAM 소담
 
-A simple Korean restaurant demo: warm paper, muted green, one original food image, an understated menu, and generous spacing.
+A simple Korean restaurant demo based in the Philippines: warm paper, muted green, one original food image, an understated menu, and generous spacing. Menu prices are illustrative Philippine peso amounts, and reservations use Philippine time (Asia/Manila).
 
 ## Run locally
 

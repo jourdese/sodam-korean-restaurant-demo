@@ -44,8 +44,8 @@ const bookingView = document.getElementById('booking-view');
 const resultView = document.getElementById('booking-result');
 const error = document.getElementById('booking-error');
 let previousFocus;
-function seoulDate() {
-  const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+function philippineDate() {
+  const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Manila', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
   const get = type => parts.find(part => part.type === type).value;
   return `${get('year')}-${get('month')}-${get('day')}`;
 }
@@ -53,7 +53,7 @@ document.querySelectorAll('[data-reserve]').forEach(button => button.addEventLis
   previousFocus = button;
   closeNavigation();
   form.reset();
-  dateInput.min = seoulDate();
+  dateInput.min = philippineDate();
   bookingView.hidden = false;
   resultView.hidden = true;
   error.hidden = true;
@@ -77,7 +77,7 @@ dialog.addEventListener('close', () => {
 form.addEventListener('submit', event => {
   event.preventDefault();
   error.hidden = true;
-  dateInput.min = seoulDate();
+  dateInput.min = philippineDate();
   if (!form.reportValidity()) return;
   const values = new FormData(form);
   const name = String(values.get('name')).trim();
@@ -97,7 +97,7 @@ form.addEventListener('submit', event => {
   }
   const formattedDate = new Intl.DateTimeFormat('en', { timeZone: 'UTC', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).format(selectedDay);
   const guests = values.get('guests');
-  document.getElementById('booking-summary').textContent = `${name}, a table for ${guests} ${guests === '1' ? 'guest' : 'guests'} on ${formattedDate} at ${values.get('time')} (Seoul time).`;
+  document.getElementById('booking-summary').textContent = `${name}, a table for ${guests} ${guests === '1' ? 'guest' : 'guests'} on ${formattedDate} at ${values.get('time')} (Philippine time).`;
   bookingView.hidden = true;
   resultView.hidden = false;
   document.getElementById('booking-done').focus();
